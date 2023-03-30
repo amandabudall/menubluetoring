@@ -3,11 +3,18 @@ class MobileNavbar {
         this.MobileMenu = document.querySelector(MobileMenu);
         this.navList = document.querySelector(navList);
         this.navLinks = document.querySelector(navLinks);
-        this.activeClass = "active";
+        this.activeClass = "active"
+
+        this.handleClick = this.handleClick.bind();
+    }
+
+    handleClick() {
+        console.log(this);
+        this.navList.classList.toggle(this.activeClass);
     }
 
     addClickEvent() {
-        this.MobileMenu.addEventListener("click", () => console.log("Oie 👂💍"));
+        this.MobileMenu.addEventListener("click", this.handleClick);
     }
 
     init() {
@@ -18,3 +25,9 @@ class MobileNavbar {
     }
 }
 
+const MobileNavbar = new MobileNavbar(
+    ".mobile-menu",
+    ".nav-list",
+    ".nav-list li",
+);
+MobileNavbar.init();
